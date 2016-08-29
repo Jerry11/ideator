@@ -1,7 +1,7 @@
 class IdeasController < ApplicationController
     def index
         # this should be @ideas not @idea :)
-        @ideas = Idea.all
+        @ideas = Idea.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
     end
     
     def create
